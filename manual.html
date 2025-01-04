@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamon Language Manual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cinnamon Language Manual</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="manual.html">Manual</a></li>
+                <li><a href="license.html">License</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>Cinnamon is a simple, C-like programming language designed for ease of use and flexibility. It provides a minimalistic syntax while offering powerful functionality.</p>
+
+        <h2>Basic Syntax</h2>
+        <p>Cinnamon uses C-like syntax. Here are some basic constructs:</p>
+        <ul>
+            <li><strong>Variables</strong>: Declare variables using the `int` keyword (e.g., <code>int a = 10;</code>).</li>
+            <li><strong>Functions</strong>: Functions are defined using the <code>int</code> return type and can accept parameters (e.g., <code>int add(int x, int y)</code>).</li>
+            <li><strong>Plugins</strong>: External code can be loaded dynamically via plugins.</li>
+        </ul>
+
+        <h2>Example</h2>
+        <pre><code>
+int main() {
+    int a = 5;
+    int b = 10;
+    int result = a + b;
+    
+    print(result);
+    return 0;
+}
+        </code></pre>
+
+        <h2>Plugin System</h2>
+        <p>The Cinnamon interpreter allows external plugins to be loaded. You can load plugins dynamically and invoke their functions.</p>
+
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Yuto_DEVELOP</p>
+    </footer>
+</body>
+</html>
