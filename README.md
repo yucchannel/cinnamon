@@ -1,4 +1,4 @@
-# Dogbit Interpreter
+# cinnamon Interpreter
 
 cinnamon is an interpreter for a C-like programming language.
 
