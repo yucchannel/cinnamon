@@ -1,4 +1,3 @@
-```markdown
 # Cinnamon Programming Language
 
 `Cinnamon` is a custom, C-like programming language designed for simplicity and flexibility. It features basic arithmetic operations, user-defined functions, and an extensible plugin system to load and execute external code. It is designed to be easy to understand and work with, providing a minimalistic yet functional experience for developers.
