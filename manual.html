@@ -1,68 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinnamon Language Manual</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinnamon Language Manual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #444;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      color: #d14;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Cinnamon Language Manual</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="manual.html">Manual</a></li>
-                <li><a href="licensep.html">License</a></li>
-                             
-            </ul>
-<!-- GitHub Star Button -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <a class="github-button" href="https://github.com/yucchannel/cinnamon" data-size="large" aria-label="Star yucchannel/cinnamon on GitHub">Star</a>
 
-    <!-- GitHub Fork Button -->
-    <a class="github-button" href="https://github.com/yucchannel/cinnamon/fork" data-size="large" aria-label="Fork yucchannel/cinnamon on GitHub">Fork</a>
+  <header>
+    <h1>Cinnamon Language Manual</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="manual.html">Manual</a></li>
+        <li><a href="licensep.html">License</a></li>
+      </ul>
+      <!-- GitHub Buttons -->
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <a class="github-button" href="https://github.com/yucchannel/cinnamon" data-size="large" aria-label="Star yucchannel/cinnamon on GitHub">Star</a>
+      <a class="github-button" href="https://github.com/yucchannel/cinnamon/fork" data-size="large" aria-label="Fork yucchannel/cinnamon on GitHub">Fork</a>
+      <a class="github-button" href="https://github.com/yucchannel/cinnamon" data-size="large" aria-label="Watch yucchannel/cinnamon on GitHub">Watch</a>
+    </nav>
+  </header>
 
-    <!-- GitHub Watch Button -->
-    <a class="github-button" href="https://github.com/yucchannel/cinnamon" data-size="large" aria-label="Watch yucchannel/cinnamon on GitHub">Watch</a>
-
-        </nav>
-    </header>
-
-    <section>
-        <h2>Introduction</h2>
-        <p>Cinnamon is a simple, C-like programming language designed for ease of use and flexibility. It provides a minimalistic syntax while offering powerful functionality.</p>
-
-        <h2>Basic Syntax</h2>
-        <p>Cinnamon uses C-like syntax. Here are some basic constructs:</p>
-        <ul>
-            <li><strong>Variables</strong>: Declare variables using the `int` keyword (e.g., <code>int a = 10;</code>).</li>
-            <li><strong>Functions</strong>: Functions are defined using the <code>int</code> return type and can accept parameters (e.g., <code>int add(int x, int y)</code>).</li>
-            <li><strong>Plugins</strong>: External code can be loaded dynamically via plugins.</li>
-        </ul>
-
-        <h2>Example</h2>
-        <pre><code>
-int main() {
-    int a = 5;
-    int b = 10;
-    int result = a + b;
-    
-    print(result);
-    return 0;
-}
-        </code></pre>
-
-        <h2>Plugin System</h2>
-        <p>The Cinnamon interpreter allows external plugins to be loaded. You can load plugins dynamically and invoke their functions.</p>
-
-        <h2>License</h2>
-        <p>This project is licensed under the MIT License.</p>
+  <main>
+    <section class="section">
+      <h2>Introduction</h2>
+      <p>Cinnamon is a simple, C-like programming language designed for ease of use and flexibility. It provides a minimalistic syntax while offering powerful functionality.</p>
     </section>
 
-    <footer>
-        <p>© 2025 Yuto_DEVELOP</p>
-    </footer>
+    <section class="section">
+      <h2>Basic Syntax</h2>
+      <p>Cinnamon uses C-like syntax. Here are some basic constructs:</p>
+      <ul>
+        <li><strong>Variables</strong>: Declare variables using the <code>int</code> keyword (e.g., <code>int a = 10;</code>).</li>
+        <li><strong>Functions</strong>: Functions are defined using the <code>int</code> return type and can accept parameters (e.g., <code>int add(int x, int y)</code>).</li>
+        <li><strong>Plugins</strong>: External code can be loaded dynamically via plugins.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Code Syntax</h2>
+      <p>The Cinnamon language offers a simple syntax for defining and running programs. Below is an example:</p>
+      <pre><code># Simple addition example
+print(1 + 2);</code></pre>
+      <p>Each command ends with a semicolon (<code>;</code>).</p>
+    </section>
+
+    <section class="section">
+      <h2>Basic Commands</h2>
+      <h3>print</h3>
+      <p>The <code>print</code> command outputs text or results:</p>
+      <pre><code>print("Hello, World!");</code></pre>
+
+      <h3>if</h3>
+      <p>Conditional branching:</p>
+      <pre><code>if (x > 10) { print("x is greater than 10"); }</code></pre>
+
+      <h3>while</h3>
+      <p>Loop structure:</p>
+      <pre><code>while (i < 5) { print(i); i = i + 1; }</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Example</h2>
+      <pre><code>int main() {
+  int a = 5;
+  int b = 10;
+  int result = a + b;
+  print(result);
+  return 0;
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Plugin System</h2>
+      <p>The Cinnamon interpreter allows external plugins to be loaded. You can load plugins dynamically and invoke their functions.</p>
+      <h3>Using Plugins</h3>
+      <p>To use a plugin:</p>
+      <pre><code># Load the plugin
+load_plugin("my_plugin.so");
+
+# Use plugin-defined functions
+plugin_function();</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Creating Plugins</h2>
+      <p>Follow these steps to create a plugin:</p>
+      <ol>
+        <li>Create a C file with your plugin logic. Example:</li>
+        <pre><code>#include &lt;stdio.h&gt;
+void plugin_function() {
+  printf("This is a plugin function!\\n");
+}</code></pre>
+        <li>Compile the file as a shared library:</li>
+        <pre><code>gcc -shared -o my_plugin.so -fPIC my_plugin.c</code></pre>
+        <li>Load the plugin in your Cinnamon script using <code>load_plugin</code>.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>License</h2>
+      <p>This project is licensed under the MIT License.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yuto_DEVELOP Cinnamon Project. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
