@@ -3,9 +3,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -O2 -std=c99
 
 # ソースファイルとターゲット名
-SRC_DIR = src
+SRC_DIR = cinnamon1/src
 BIN_DIR = bin
-SRC_FILES = $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/dogbit_interpreter.c $(SRC_DIR)/plugin.c
+SRC_FILES = $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/plugin.c
 TARGET = $(BIN_DIR)/cinnamon
 
 # 出力ディレクトリ
