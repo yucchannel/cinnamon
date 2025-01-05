@@ -1,0 +1,2 @@
+# current_version.txt (プロジェクトディレクトリ内)
+1.01
