@@ -1,0 +1,2 @@
+# version.txt (GitHubリポジトリ内)
+1.0.0
