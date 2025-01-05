@@ -14,3 +14,13 @@ $(OBJ): $(SRC)
 
 clean:
 	rm -f $(OBJ) $(EXEC)
+# Makefileの一部
+all: check_updates
+
+check_updates:
+    gcc -o update_checker update_checker.c
+    ./update_checker
+
+update:
+    git pull origin main
+    echo "1.0.0" > current_version.txt
