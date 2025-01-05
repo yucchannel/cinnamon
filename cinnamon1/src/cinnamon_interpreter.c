@@ -140,7 +140,7 @@ void load_and_execute_plugin(const char *plugin_name, const char *filename) {
     // プラグイン名を確認し、適切な処理を実行
     if (strcmp(plugin_name, "print_plugin") == 0) {
         printf("Plugin: Print\n");
-        printf("Executing dogbit code from file: %s\n", filename);
+        printf("Executing cinnamon code from file: %s\n", filename);
     } else {
         printf("Unknown plugin: %s\n", plugin_name);
     }
