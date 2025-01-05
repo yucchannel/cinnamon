@@ -16,7 +16,7 @@ You can install and build `cinnamon` from source using `git` and `make`. Follow 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Yuto_DEVELOP/cinnamon.git
+   git clone https://github.com/yucchannel/cinnamon.git
    cd cinnamon
    ```
 
