@@ -5,11 +5,9 @@ CFLAGS = -Wall -Wextra -O2 -std=c99
 # ソースファイルとターゲット名
 SRC_DIR = cinnamon1/src
 BIN_DIR = bin
-SRC_FILES = $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/dogbit_interpreter.c $(SRC_DIR)/plugin.c
-TARGET = $(BIN_DIR)/cinnamon
-
-# 出力ディレクトリ
+SRC_FILES = $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/plugin.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
+TARGET = $(BIN_DIR)/cinnamon
 
 # ビルドターゲット
 all: $(TARGET)
@@ -22,7 +20,7 @@ $(TARGET): $(OBJ_FILES) | $(BIN_DIR)
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# プラグインのディレクトリ作成（必要に応じて）
+# 出力ディレクトリ作成
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
