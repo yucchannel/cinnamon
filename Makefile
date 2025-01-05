@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-SRC = src/cinnamon_interpreter.c
+SRC = cinnamon1/src/cinnamon_interpreter.c
 OBJ = cinnamon_interpreter.o
 EXEC = cinnamon
 
