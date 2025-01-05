@@ -30,7 +30,7 @@ You can install and build `cinnamon` from source using `git` and `make`. Follow 
 3. **Run the interpreter**:
    After building, you can run `cinnamon` with a `.cin` file:
    ```bash
-   ./cinnamon example.cin
+   ./cinnamon1 example.cin
    ```
 
    Replace `example.cin` with your own `.cin` source code.
