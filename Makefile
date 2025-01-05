@@ -1,39 +1,37 @@
+# コンパイルオプション
 CC = gcc
-CFLAGS = -Wall
-SRC = cinnamon1/src/cinnamon_interpreter.c
-OBJ = cinnamon_interpreter.o
-EXEC = cinnamon
+CFLAGS = -Wall -Wextra -O2 -std=c99
 
-# リモートバージョンのURL
-REMOTE_VERSION_URL = "https://raw.githubusercontent.com/Yuto_DEVELOP/cinnamon/main/version.txt"
-VERSION_FILE = "current_version.txt"
+# ソースファイルとターゲット名
+SRC_DIR = src
+BIN_DIR = bin
+SRC_FILES = $(SRC_DIR)/cinnamon_interpreter.c $(SRC_DIR)/dogbit_interpreter.c $(SRC_DIR)/plugin.c
+TARGET = $(BIN_DIR)/cinnamon
 
-all: $(EXEC) check_updates
+# 出力ディレクトリ
+OBJ_FILES = $(SRC_FILES:.c=.o)
 
-$(EXEC): $(OBJ)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
+# ビルドターゲット
+all: $(TARGET)
 
-$(OBJ): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC)
+# 実行ファイルを作成
+$(TARGET): $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ_FILES)
+
+# オブジェクトファイルを作成
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# プラグインのディレクトリ作成（必要に応じて）
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 # クリーンアップ
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -rf $(OBJ_FILES) $(TARGET)
 
-# 更新チェック
-check_updates:
-	@echo "Checking for updates..."
-	@gcc -o update_checker update_checker.c
-	@./update_checker
+# インストール
+install: all
+	cp $(TARGET) /usr/local/bin/
 
-# 更新処理
-update:
-	@git pull origin main
-	@echo "Updating version to 1.0.0"
-	@echo "1.0.0" > $(VERSION_FILE)
-
-# バージョンチェックのためのスクリプトを実行
-check_version:
-	@echo "Checking version..."
-	@./update_checker
-
+.PHONY: all clean install
