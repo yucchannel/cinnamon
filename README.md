@@ -114,12 +114,7 @@ cinnamon1/
 ├── LICENSE            # MIT License file
 ├── README.md          # Project description and instructions
 ├── src/               # Source code for cinnamon interpreter
-│   ├── main.c         # Main entry point for cinnamon interpreter
-│   ├── lexer.c        # Lexer (tokenizer) implementation
-│   ├── parser.c       # Parser implementation
-│   ├── interpreter.c  # Interpreter logic
-│   ├── plugin.c       # Plugin loading and execution
-│   └── utils.c        # Utility functions (file reading, etc.)
+│   └── cinnamon_interprenter.c        # main script
 ├── examples/          # Example Cinnamon programs
 │   └── example.cin    # Example source file for cinnamon
 ├── Makefile           # Build script
