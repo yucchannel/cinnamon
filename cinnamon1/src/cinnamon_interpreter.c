@@ -102,16 +102,26 @@ ASTNode* create_ast_node(ASTNodeType type, char *value) {
 
 // 式の解析
 ASTNode* parse_expression(Token tokens[], int *pos) {
-    ASTNode *node = create_ast_node(AST_NUMBER, tokens[*pos].value);
-    (*pos)++;
-    if (tokens[*pos].type == TOKEN_PLUS) {
+    ASTNode *node = NULL;
+    if (tokens[*pos].type == TOKEN_NUMBER) {
+        node = create_ast_node(AST_NUMBER, tokens[*pos].value);
         (*pos)++;
-        ASTNode *right = parse_expression(tokens, pos);
+    }
+
+    while (tokens[*pos].type == TOKEN_PLUS) {
+        (*pos)++;
+        ASTNode *right = NULL;
+        if (tokens[*pos].type == TOKEN_NUMBER) {
+            right = create_ast_node(AST_NUMBER, tokens[*pos].value);
+            (*pos)++;
+        }
+        
         ASTNode *parent = create_ast_node(AST_ADDITION, "+");
         parent->left = node;
         parent->right = right;
-        return parent;
+        node = parent;
     }
+
     return node;
 }
 
@@ -161,7 +171,6 @@ char* read_file(const char *filename) {
 
 // プラグインの実行
 void load_and_execute_plugin(const char *plugin_name, const char *filename) {
-    // プラグイン名を確認し、適切な処理を実行
     if (strcmp(plugin_name, "print_plugin") == 0) {
         printf("Plugin: Print\n");
         printf("Executing dogbit code from file: %s\n", filename);
@@ -187,7 +196,7 @@ void execute_dogbit(const char *filename, Plugin *plugins, int plugin_count) {
     // プラグイン処理（ファイル名にプラグイン名が含まれている場合）
     for (int i = 0; i < plugin_count; i++) {
         if (strstr(filename, plugins[i].name)) {  
-            plugins[i].execute(plugins[i].name, filename);  // 関数ポインタを使用
+            plugins[i].execute(plugins[i].name, filename);
             break;
         }
     }
@@ -205,7 +214,7 @@ void execute_dogbit(const char *filename, Plugin *plugins, int plugin_count) {
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("Usage: %s <dogbit_file>\n", argv[0]);
+        printf("Usage: %s <cinnamon_file>\n", argv[0]);
         return 1;
     }
 
