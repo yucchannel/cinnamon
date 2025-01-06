@@ -5,6 +5,7 @@
 
 #define MAX_TOKENS 100
 #define MAX_PLUGIN_NAME 50
+#define MAX_TOKEN_VALUE 256
 
 // トークンタイプの定義
 typedef enum {
@@ -13,7 +14,7 @@ typedef enum {
 
 typedef struct {
     TokenType type;
-    char value[256];
+    char value[MAX_TOKEN_VALUE];
 } Token;
 
 // ASTノードタイプの定義
@@ -23,7 +24,7 @@ typedef enum {
 
 typedef struct ASTNode {
     ASTNodeType type;
-    char value[256];
+    char value[MAX_TOKEN_VALUE];
     struct ASTNode *left, *right;
 } ASTNode;
 
@@ -42,6 +43,10 @@ Token get_next_token(const char *source, int *pos) {
         token.type = TOKEN_NUMBER;
         int i = 0;
         while (isdigit(source[*pos])) {
+            if (i >= MAX_TOKEN_VALUE - 1) {
+                fprintf(stderr, "Token too long\n");
+                exit(1);
+            }
             token.value[i++] = source[*pos];
             (*pos)++;
         }
@@ -66,6 +71,10 @@ Token get_next_token(const char *source, int *pos) {
         token.type = TOKEN_IDENTIFIER;
         int i = 0;
         while (isalnum(source[*pos])) {
+            if (i >= MAX_TOKEN_VALUE - 1) {
+                fprintf(stderr, "Token too long\n");
+                exit(1);
+            }
             token.value[i++] = source[*pos];
             (*pos)++;
         }
@@ -80,6 +89,10 @@ Token get_next_token(const char *source, int *pos) {
 // ASTノード作成
 ASTNode* create_ast_node(ASTNodeType type, char *value) {
     ASTNode *node = malloc(sizeof(ASTNode));
+    if (!node) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
     node->type = type;
     strcpy(node->value, value);
     node->left = NULL;
@@ -128,7 +141,18 @@ char* read_file(const char *filename) {
     fseek(file, 0, SEEK_SET);
     
     char *content = malloc(length + 1);
-    fread(content, 1, length, file);
+    if (!content) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
+    
+    size_t read_size = fread(content, 1, length, file);
+    if (read_size != length) {
+        fprintf(stderr, "Failed to read file contents\n");
+        free(content);
+        exit(1);
+    }
+    
     content[length] = '\0';
     
     fclose(file);
@@ -140,7 +164,7 @@ void load_and_execute_plugin(const char *plugin_name, const char *filename) {
     // プラグイン名を確認し、適切な処理を実行
     if (strcmp(plugin_name, "print_plugin") == 0) {
         printf("Plugin: Print\n");
-        printf("Executing cinnamon code from file: %s\n", filename);
+        printf("Executing dogbit code from file: %s\n", filename);
     } else {
         printf("Unknown plugin: %s\n", plugin_name);
     }
